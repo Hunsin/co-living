@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>共生住宅價位圖</title>
+
+  <!-- scripts, libraries -->
+  <script src="lib.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="//maps.googleapis.com/maps/api/js?key=<YOUR_API_KEY>"></script>
+  <script src="/__/firebase/5.4.2/firebase-app.js"></script>
+  <script src="/__/firebase/5.4.2/firebase-firestore.js"></script>
+
+  <style>
+    body { margin: 0; box-sizing: border-box; }
+    #map { height: 100%; }
+    #panel {
+      position: absolute;
+      display: flex;
+      top: 0;
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+    }
+    #panel div { margin: 0.5em 1em; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div id="panel">
+    <div>
+      <input type="checkbox" name="single" id="single" onchange="updateSingle()" checked>
+      <label for="single">含單人房</label>
+    </div>
+  </div>
+  <script>
+    firebase.initializeApp(firebaseConfig);
+    
+    var db  = firebase.firestore(),
+        map = new google.maps.Map(document.getElementById('map'), {
+      center: new google.maps.LatLng(25.0364, 121.54),
+      disableDefaultUI: true,
+      zoom: 12.8
+    });
+
+    db.settings({ timestampsInSnapshots: true });
+    map.data.setStyle(styleFeature);
+    
+    var companies = db.collection("companies"),
+        houses    = db.collection("houses");
+    initPanel();
+  </script>
+  </body>
+</html>
