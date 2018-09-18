@@ -12,14 +12,10 @@ See the [page](https://co-living.firebaseapp.com).
 
 // collection houses
 {
-  "address": "",
-  "company": {}, // firebase.firestore.DocumentReference
-
-  // number: how much is the fee
-  // true:   yes, but number unknown
-  // false:  no extra fee
-  "extraFees": false || 800
-  "location": new firebase.firestore.GeoPoint(latitude, longitude),
+  "address":    "",
+  "company":    {},   // firebase.firestore.DocumentReference
+  "extra_fees": false // true: yes, false: no extra fee or already included
+  "location":   new firebase.firestore.GeoPoint(latitude, longitude),
   "rooms": [ 
     {
       "gender": 0,    // 0: women, 1: men, 2: not specified
