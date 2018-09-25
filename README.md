@@ -6,17 +6,18 @@ See the [page](https://co-living.firebaseapp.com).
 ```js
 // collection companies
 {
-  "name": "",
-  "web":  "https://..."
+  "name":   "",
+  "web":    "https://...",
+  "update": new Date() // last update time
 }
 
 // collection houses
 {
   "address":    "",
-  "company":    {},   // firebase.firestore.DocumentReference
-  "extra_fees": false // true: yes, false: no extra fee or already included
+  "company":    {},    // firebase.firestore.DocumentReference
+  "extra_fees": false, // true: yes, false: no extra fee or already included
   "location":   new firebase.firestore.GeoPoint(latitude, longitude),
-  "rooms": [ 
+  "rooms": [
     {
       "gender": 0,    // 0: women, 1: men, 2: not specified
       "people": 2,    // how many people per room

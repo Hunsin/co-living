@@ -9,9 +9,9 @@ function displayedPrice(rooms) {
   }
 
   let total = out.map(room => room.people * room.price)
-                   .reduce((x, y) => x + y),
+                 .reduce((x, y) => x + y),
       num = out.map(room => room.people)
-                 .reduce((x, y) => x + y);
+               .reduce((x, y) => x + y);
   return total / num;
 }
 
